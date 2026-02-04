@@ -1,0 +1,277 @@
+[
+  {
+    "id": 1,
+    "bookingId": "BK1769846802556",
+    "busId": 4,
+    "userId": 1,
+    "busName": "Swift Travels",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      1
+    ],
+    "passengers": [
+      {
+        "seat": "1",
+        "name": "abhi",
+        "age": "21",
+        "gender": "male"
+      }
+    ],
+    "totalAmount": 800,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T08:06:42.556Z",
+    "paymentDate": "2026-01-31T08:06:50.616Z"
+  },
+  {
+    "id": 2,
+    "bookingId": "BK1769847021335",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      30
+    ],
+    "passengers": [
+      {
+        "seat": "30",
+        "name": "abhi",
+        "age": "22",
+        "gender": "male"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T08:10:21.335Z",
+    "paymentDate": "2026-01-31T08:10:32.518Z"
+  },
+  {
+    "id": 3,
+    "bookingId": "BK1769847116492",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      25
+    ],
+    "passengers": [
+      {
+        "seat": "25",
+        "name": "abhi",
+        "age": "21",
+        "gender": "female"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T08:11:56.492Z",
+    "paymentDate": "2026-01-31T08:12:09.507Z"
+  },
+  {
+    "id": 4,
+    "bookingId": "BK1769847599605",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      32
+    ],
+    "passengers": [
+      {
+        "seat": "32",
+        "name": "abhi",
+        "age": "21",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "pending",
+    "createdAt": "2026-01-31T08:19:59.606Z"
+  },
+  {
+    "id": 5,
+    "bookingId": "BK1769847696230",
+    "busId": 4,
+    "userId": 1,
+    "busName": "Swift Travels",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      38
+    ],
+    "passengers": [
+      {
+        "seat": "38",
+        "name": "abhi",
+        "age": "32",
+        "gender": "male",
+        "phone": "123456789"
+      }
+    ],
+    "totalAmount": 800,
+    "status": "pending",
+    "createdAt": "2026-01-31T08:21:36.231Z"
+  },
+  {
+    "id": 6,
+    "bookingId": "BK1769847759557",
+    "busId": 4,
+    "userId": 1,
+    "busName": "Swift Travels",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      3
+    ],
+    "passengers": [
+      {
+        "seat": "3",
+        "name": "abhi",
+        "age": "22",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 800,
+    "status": "pending",
+    "createdAt": "2026-01-31T08:22:39.557Z"
+  },
+  {
+    "id": 7,
+    "bookingId": "BK1769849216864",
+    "busId": 6,
+    "userId": 1,
+    "busName": "Night Rider",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      31
+    ],
+    "passengers": [
+      {
+        "seat": "31",
+        "name": "abhi",
+        "age": "32",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 750,
+    "status": "pending",
+    "createdAt": "2026-01-31T08:46:56.867Z"
+  },
+  {
+    "id": 8,
+    "bookingId": "BK1769849310473",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      35
+    ],
+    "passengers": [
+      {
+        "seat": "35",
+        "name": "abhi",
+        "age": "32",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "pending",
+    "createdAt": "2026-01-31T08:48:30.473Z"
+  },
+  {
+    "id": 9,
+    "bookingId": "BK1769849604652",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      19
+    ],
+    "passengers": [
+      {
+        "seat": "19",
+        "name": "abhiram",
+        "age": "32",
+        "gender": "female",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T08:53:24.653Z"
+  },
+  {
+    "id": 10,
+    "bookingId": "BK1769850268472",
+    "busId": 5,
+    "userId": 1,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-02",
+    "seats": [
+      14
+    ],
+    "passengers": [
+      {
+        "seat": "14",
+        "name": "abhi",
+        "age": "21",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T09:04:28.472Z"
+  },
+  {
+    "id": 11,
+    "bookingId": "BK1769852173258",
+    "busId": 5,
+    "userId": 2,
+    "busName": "City Express",
+    "from": "Pune",
+    "to": "Hyderabad",
+    "date": "2026-02-05",
+    "seats": [
+      22
+    ],
+    "passengers": [
+      {
+        "seat": "22",
+        "name": "abhi",
+        "age": "22",
+        "gender": "male",
+        "phone": "1234567890"
+      }
+    ],
+    "totalAmount": 700,
+    "status": "confirmed",
+    "createdAt": "2026-01-31T09:36:13.258Z"
+  }
+]

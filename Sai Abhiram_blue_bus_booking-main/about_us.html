@@ -1,0 +1,249 @@
+bus<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - BlueBus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assests/css/styles.css">
+  <style>
+    body { 
+      background: #1b1b2f;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar {
+      position: relative;
+      z-index: 9999;
+      background: rgba(30, 30, 60, 0.9) !important;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #00f5d4 !important;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 0 1rem 0 2rem;
+      color: #f1f1f1 !important;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #00f5d4;
+      transition: width 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #00f5d4 !important;
+      border-bottom: 2px solid #00f5d4;
+    }
+
+    .hero-full {
+      position: relative;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 45vh;
+      color: #f1f1f1;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0,0,0,0.6), rgba(0,0,0,0.25));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 1rem;
+    }
+
+    .container h2, 
+    .container p, 
+    .container li {
+      color: #e0e0e0;
+    }
+
+    .container h2 {
+      color: #00f5d4;
+      margin-top: 2rem;
+      font-weight: 700;
+    }
+
+    .container li {
+      margin-bottom: 0.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #f1f1f1;
+    }
+
+    .card-title {
+      color: #00f5d4;
+      font-weight: 600;
+    }
+
+    .card-text {
+      color: #ccc;
+    }
+
+    .alert-info {
+      background: rgba(0,245,212,0.1);
+      border: 1px solid #00f5d4;
+      color: #00f5d4;
+    }
+
+    footer {
+      background: #111;
+      color: #888;
+    }
+
+    footer a {
+      color: #00f5d4;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🚌 BlueBus</a>
+      <ul class="navbar-nav ms-auto flex-row">
+        <li class="nav-item"><a class="nav-link" href="index.html"><strong>Home</strong></a></li>
+        <li class="nav-item"><a class="nav-link active" href="about_us.html"><strong>About Us</strong></a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html"><strong>Login</strong></a></li>
+        <li class="nav-item"><a class="nav-link" href="signup.html" style="color: #ffd700 !important;"><strong>Sign Up</strong></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero-full" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80');">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="display-6 fw-semibold">About BlueBus</h1>
+      <p class="lead mb-0">Smart, reliable, and seamless bus booking at your fingertips.</p>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>Our Vision</h2>
+        <p>
+          BlueBus aims to transform the way people travel by providing a fast, secure, and user-friendly platform 
+          for bus bookings. We envision a world where every journey is convenient, transparent, and stress-free.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+          To make bus travel accessible to everyone by offering real-time seat availability, transparent pricing, 
+          and a seamless booking experience that inspires confidence and trust.
+        </p>
+
+        <h2>Why Choose BlueBus?</h2>
+        <ul>
+          <li>✓ Quick and easy booking in just a few clicks</li>
+          <li>✓ Transparent pricing with no hidden charges</li>
+          <li>✓ Real-time seat updates and availability</li>
+          <li>✓ Smart notifications for your journey</li>
+          <li>✓ Reliable support whenever you need it</li>
+        </ul>
+
+        <h2>Core Features</h2>
+        <div class="row mt-4">
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">🎯 User-Friendly Interface</h5>
+                <p class="card-text">Book tickets quickly with an intuitive and clean interface designed for ease of use.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">📊 Live Seat Availability</h5>
+                <p class="card-text">Check live seat updates for every bus, ensuring you get the seat you want.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">🔔 Smart Alerts</h5>
+                <p class="card-text">Get instant notifications about departures, delays, and arrivals for peace of mind.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">💳 Secure Payments</h5>
+                <p class="card-text">All transactions are safe and encrypted to protect your personal and payment information.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">🚀 Fast Booking</h5>
+                <p class="card-text">Complete your booking in under 2 minutes with our streamlined process.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">🤝 24/7 Support</h5>
+                <p class="card-text">Our support team is always ready to help with any questions or issues you may have.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-5">
+          <h5>Join Thousands of Satisfied Travelers</h5>
+          <p class="mb-0">BlueBus is trusted by thousands for safe and reliable bus bookings. Experience hassle-free travel today!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 mt-5 text-center">
+    <div class="container text-muted">
+      <p>&copy; 2026 BlueBus. All rights reserved. Your journey, our responsibility.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

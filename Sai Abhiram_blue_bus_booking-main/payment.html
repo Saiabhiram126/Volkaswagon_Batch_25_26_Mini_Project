@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment - BlueBus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assests/css/styles.css">
+  <style>
+    body {
+      background: #1b1b2f;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    }
+
+    .navbar-brand {
+      color: #00f5d4 !important;
+      font-weight: 700;
+    }
+
+    .payment-container {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .payment-card {
+      background: #2a2a4a;
+      border: 2px solid #00f5d4;
+      border-radius: 15px;
+      padding: 2.5rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0, 245, 212, 0.2);
+    }
+
+    .payment-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #00f5d4;
+      padding-bottom: 1rem;
+    }
+
+    .payment-header h2 {
+      color: #00f5d4;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-header p {
+      color: #b0b0b0;
+      font-size: 0.9rem;
+    }
+
+    .payment-details {
+      background: rgba(0, 245, 212, 0.05);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .detail-row:last-child {
+      margin-bottom: 0;
+      border-top: 1px solid rgba(0, 245, 212, 0.3);
+      padding-top: 1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .detail-label {
+      color: #b0b0b0;
+    }
+
+    .detail-value {
+      color: #f1f1f1;
+      font-weight: 600;
+    }
+
+    .payment-methods {
+      margin-bottom: 2rem;
+    }
+
+    .payment-methods h5 {
+      color: #00f5d4;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .method-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 0.8rem;
+      border: 2px solid rgba(0, 245, 212, 0.3);
+      background: rgba(0, 245, 212, 0.05);
+      color: #f1f1f1;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .method-btn:hover {
+      border-color: #00f5d4;
+      background: rgba(0, 245, 212, 0.1);
+      color: #00f5d4;
+    }
+
+    .method-btn.active {
+      border-color: #00f5d4;
+      background: rgba(0, 245, 212, 0.2);
+      color: #00f5d4;
+    }
+
+    .card-input-group {
+      display: none;
+    }
+
+    .card-input-group.active {
+      display: block;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      color: #f1f1f1;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    .form-control:focus {
+      border-color: #00f5d4;
+      box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+      color: #f1f1f1;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-control::placeholder {
+      color: #888;
+    }
+
+    .btn-pay {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #00f5d4, #06beb6);
+      border: none;
+      color: #1b1b2f;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-pay:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 245, 212, 0.4);
+    }
+
+    .btn-pay:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .security-badge {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .security-badge i {
+      color: #00f5d4;
+      margin-right: 0.3rem;
+    }
+
+    .loading-spinner {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .spinner-border {
+      color: #00f5d4;
+    }
+
+    .upi-section {
+      display: block;
+      background: rgba(0, 245, 212, 0.05);
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .upi-section.hidden {
+      display: none;
+    }
+
+    .upi-qr {
+      width: 220px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 2px dashed rgba(0, 245, 212, 0.4);
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      margin-bottom: 0.8rem;
+    }
+
+    .upi-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: #cfcfcf;
+      font-size: 0.9rem;
+    }
+
+    .btn-copy {
+      border: 1px solid rgba(0, 245, 212, 0.5);
+      background: transparent;
+      color: #00f5d4;
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .btn-copy:hover {
+      background: rgba(0, 245, 212, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🚌 BlueBus</a>
+      <ul class="navbar-nav ms-auto flex-row">
+        <li class="nav-item"><a class="nav-link" href="index.html"><strong>Home</strong></a></li>
+        <li class="nav-item"><a class="nav-link" href="about_us.html"><strong>About Us</strong></a></li>
+        <li id="userNav" class="nav-item" style="display: none;"><a class="nav-link" href="#"><strong id="userName"></strong></a></li>
+        <li id="authNav" class="nav-item"><a class="nav-link" href="login.html"><strong>Login</strong></a></li>
+        <li id="signupNav" class="nav-item"><a class="nav-link" href="signup.html" style="color: #ffd700 !important;"><strong>Sign Up</strong></a></li>
+        <li id="logoutNav" class="nav-item" style="display: none;"><a class="nav-link" href="#" id="logoutBtn"><strong>Logout</strong></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Payment Container -->
+  <div class="payment-container">
+    <div class="payment-card">
+      <div class="payment-header">
+        <h2>💳 Secure Payment</h2>
+        <p>Complete your booking with a safe payment</p>
+      </div>
+
+      <!-- Payment Details -->
+      <div class="payment-details">
+        <div class="detail-row">
+          <span class="detail-label">Bus Name:</span>
+          <span class="detail-value" id="busName">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Seats:</span>
+          <span class="detail-value" id="seatsInfo">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Fare per Seat:</span>
+          <span class="detail-value">₹<span id="farePerSeat">0</span></span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Amount to Pay:</span>
+          <span class="detail-value">₹<span id="totalAmount">0</span></span>
+        </div>
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <h5>Select Payment Method</h5>
+        <button class="method-btn active" onclick="selectMethod('upi')">📱 UPI / Mobile Wallet</button>
+        <button class="method-btn" onclick="selectMethod('card')">💳 Debit / Credit Card</button>
+        <button class="method-btn" onclick="selectMethod('netbanking')">🏦 Net Banking</button>
+      </div>
+
+      <!-- UPI QR Section (only for UPI method) -->
+      <div id="upiSection" class="upi-section">
+        <img
+          src="assests/images/bank-qr.svg"
+          alt="Scan to pay"
+          class="upi-qr"
+        >
+        <div class="upi-meta">
+          <div>Scan the QR with any UPI app to pay the exact amount.</div>
+          <div>
+            UPI ID: <strong id="upiId">bluebus@upi</strong>
+            <button class="btn-copy" onclick="copyUpiId()">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Input (only for card method) -->
+      <div id="cardInputs" class="card-input-group">
+        <input type="text" id="cardNumber" class="form-control" placeholder="Card Number (16 digits)" maxlength="16">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5">
+          <input type="text" id="cvv" class="form-control" placeholder="CVV" maxlength="3">
+        </div>
+        <input type="text" id="cardName" class="form-control" placeholder="Cardholder Name">
+      </div>
+
+      <!-- Payment Button -->
+      <button class="btn-pay" onclick="processPayment()" id="payBtn">
+        <span id="payText">Complete Payment</span>
+        <span class="loading-spinner" id="paySpinner">
+          <span class="spinner-border spinner-border-sm"></span>
+        </span>
+      </button>
+
+      <!-- Security Badge -->
+      <div class="security-badge">
+        🔒 Your payment information is secure and encrypted
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assests/js/main.js"></script>
+  <script>
+    const API_URL = 'https://bus-booking-ory6.onrender.com/api';
+    let selectedMethod = 'upi';
+
+    // Load booking details
+    document.addEventListener('DOMContentLoaded', function() {
+      const booking = JSON.parse(localStorage.getItem('currentBooking') || 'null');
+
+      if (!booking) {
+        alert('No booking found! Redirecting to home.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      console.log('Payment page - booking:', booking);
+
+      // Display booking details
+      document.getElementById('busName').textContent = booking.busName;
+      document.getElementById('seatsInfo').textContent = booking.seats.join(', ');
+      document.getElementById('farePerSeat').textContent = (booking.totalAmount / booking.seats.length).toFixed(0);
+      document.getElementById('totalAmount').textContent = booking.totalAmount;
+    });
+
+    function selectMethod(method) {
+      selectedMethod = method;
+      
+      // Update button styles
+      document.querySelectorAll('.method-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Show/hide card inputs
+      const cardInputs = document.getElementById('cardInputs');
+      const upiSection = document.getElementById('upiSection');
+      if (method === 'card') {
+        cardInputs.classList.add('active');
+      } else {
+        cardInputs.classList.remove('active');
+      }
+
+      if (method === 'upi') {
+        upiSection.classList.remove('hidden');
+      } else {
+        upiSection.classList.add('hidden');
+      }
+    }
+
+    function copyUpiId() {
+      const upiId = document.getElementById('upiId').textContent;
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(upiId).then(() => {
+          alert('UPI ID copied');
+        }).catch(() => {
+          alert('Unable to copy. Please copy manually.');
+        });
+      } else {
+        alert('Copy not supported. Please copy manually.');
+      }
+    }
+
+    async function processPayment() {
+      const booking = JSON.parse(localStorage.getItem('currentBooking') || 'null');
+      const payBtn = document.getElementById('payBtn');
+      const payText = document.getElementById('payText');
+      const paySpinner = document.getElementById('paySpinner');
+
+      if (!booking) {
+        alert('No booking found!');
+        return;
+      }
+
+      // Validation
+      if (selectedMethod === 'card') {
+        const card = document.getElementById('cardNumber').value;
+        const expiry = document.getElementById('expiry').value;
+        const cvv = document.getElementById('cvv').value;
+        const name = document.getElementById('cardName').value;
+
+        if (!card || card.length !== 16) {
+          alert('Please enter a valid 16-digit card number');
+          return;
+        }
+        if (!expiry || !expiry.includes('/')) {
+          alert('Please enter expiry in MM/YY format');
+          return;
+        }
+        if (!cvv || cvv.length !== 3) {
+          alert('Please enter a valid 3-digit CVV');
+          return;
+        }
+        if (!name) {
+          alert('Please enter cardholder name');
+          return;
+        }
+      }
+
+      // Show loading
+      payBtn.disabled = true;
+      payText.style.display = 'none';
+      paySpinner.style.display = 'inline-block';
+
+      // Confirm payment via backend
+      try {
+        const response = await fetch(`${API_URL}/bookings/${booking.id}/confirm`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            paymentMethod: selectedMethod,
+            paymentId: 'PAY' + Date.now()
+          })
+        });
+
+        if (!response.ok) throw new Error('Payment failed');
+
+        const data = await response.json();
+        console.log('Payment confirmed, booking:', data.booking);
+        
+        // Keep the booking data in localStorage
+        localStorage.setItem('currentBooking', JSON.stringify(data.booking));
+        const paidBookingId = data.booking.bookingId || data.booking.id || 'paid';
+        localStorage.setItem('paymentStatus', 'paid');
+        localStorage.setItem('paymentStatusBookingId', String(paidBookingId));
+        
+        // Redirect to confirmation page
+        setTimeout(() => {
+          window.location.href = 'confirmation.html';
+        }, 1000);
+      } catch (error) {
+        console.error('Payment error:', error);
+        alert('Payment failed. Please try again.');
+        
+        // Reset button
+        payBtn.disabled = false;
+        payText.style.display = 'inline-block';
+        paySpinner.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "john doe",
+    "email": "john@test.com",
+    "password": "$2b$10$R6mYS4rXKjAOwFcVhWbIxeFFEIyTHsRCE/D5FYrePCjOd8/el3G/q",
+    "phone": "1234567890",
+    "createdAt": "2026-01-31T08:06:08.908Z"
+  },
+  {
+    "id": 2,
+    "name": "abhi ram",
+    "email": "abhi@gmail.com",
+    "password": "$2b$10$ERR0mNTlYjNqoGaR7/t33OIJTDnlW9mfFR/GuhCCH2ZrvxV.Bb7L2",
+    "phone": "1234567890",
+    "createdAt": "2026-01-31T09:35:01.665Z"
+  }
+]

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up - BlueBus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assests/css/styles.css">
+  <style>
+    .signup-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 2rem 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .signup-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    .signup-header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      padding: 2rem;
+      border-radius: 15px 15px 0 0;
+      color: #fff;
+      text-align: center;
+    }
+    .signup-header h2 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .signup-header p {
+      color: #ffd700;
+      font-weight: 600;
+    }
+    .form-control {
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      margin-bottom: 1rem;
+    }
+    .form-control:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    .btn-signup {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      width: 100%;
+    }
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #666;
+    }
+    .login-link a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+      color: #764ba2;
+    }
+    .home-link {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+    .home-link a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="home-link">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+  <div class="signup-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="card signup-card">
+            <div class="signup-header">
+              <h2>🚌 BlueBus</h2>
+              <p>Join Us Today!</p>
+            </div>
+            <div class="card-body p-4">
+              <form id="signupForm">
+                <div class="form-row">
+                  <div>
+                    <label for="firstName" class="form-label fw-bold">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+                  </div>
+                  <div>
+                    <label for="lastName" class="form-label fw-bold">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label fw-bold">Email Address</label>
+                  <input type="email" class="form-control" id="signupEmail" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="phone" class="form-label fw-bold">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="10-digit phone number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-row">
+                  <div>
+                    <label for="signupPassword" class="form-label fw-bold">Password</label>
+                    <input type="password" class="form-control" id="signupPassword" name="password" placeholder="Create password" required>
+                  </div>
+                  <div>
+                    <label for="confirmPassword" class="form-label fw-bold">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                  </div>
+                </div>
+
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                  <label class="form-check-label" for="agreeTerms">
+                    I agree to the Terms & Conditions and Privacy Policy
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-signup btn-primary">Create Account</button>
+              </form>
+
+              <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function(){
+      const API_URL = 'https://bus-booking-ory6.onrender.com/api';
+      const signupForm = document.getElementById('signupForm');
+      
+      if(signupForm){
+        signupForm.addEventListener('submit', async function(e){
+          e.preventDefault();
+          
+          const firstName = document.getElementById('firstName').value;
+          const lastName = document.getElementById('lastName').value;
+          const email = document.getElementById('signupEmail').value;
+          const phone = document.getElementById('phone').value;
+          const password = document.getElementById('signupPassword').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          
+          // Validate passwords match
+          if(password !== confirmPassword){
+            alert('❌ Passwords do not match!');
+            return;
+          }
+          
+          // Validate phone number
+          if(!/^\d{10}$/.test(phone)){
+            alert('❌ Please enter a valid 10-digit phone number!');
+            return;
+          }
+          
+          try {
+            // Call backend signup API
+            const response = await fetch(`${API_URL}/auth/signup`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: `${firstName} ${lastName}`,
+                email,
+                phone,
+                password
+              })
+            });
+            
+            if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(errorData.error || 'Signup failed');
+            }
+            
+            const data = await response.json();
+            console.log('Signup successful:', data);
+            
+            // Store user info in localStorage as 'currentUser'
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            localStorage.setItem('authToken', data.token);
+            
+            // Show success message and redirect
+            alert('✓ Account created successfully! Welcome to BlueBus.');
+            window.location.href = 'index.html';
+          } catch (error) {
+            console.error('Signup error:', error);
+            alert('❌ Signup failed: ' + error.message);
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

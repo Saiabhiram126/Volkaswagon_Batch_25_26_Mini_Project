@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Successful - BlueBus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assests/css/styles.css">
+  <style>
+    body {
+      background: #1b1b2f;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    }
+
+    .navbar-brand {
+      color: #00f5d4 !important;
+      font-weight: 700;
+    }
+
+    .success-container {
+      text-align: center;
+      background: #2a2a4a;
+      padding: 3rem;
+      border-radius: 15px;
+      border: 2px solid #00f5d4;
+      max-width: 600px;
+      box-shadow: 0 10px 40px rgba(0, 245, 212, 0.2);
+    }
+
+    .success-icon {
+      font-size: 5rem;
+      color: #00f5d4;
+      margin-bottom: 1rem;
+      animation: popIn 0.6s ease-out;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      color: #00f5d4;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .success-message {
+      color: #b0b0b0;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .receipt {
+      background: rgba(0, 245, 212, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .receipt-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+    }
+
+    .receipt-item:last-child {
+      border-bottom: none;
+      padding-top: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #00f5d4;
+    }
+
+    .receipt-label {
+      color: #b0b0b0;
+    }
+
+    .receipt-value {
+      color: #f1f1f1;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #00f5d4, #06beb6);
+      border: none;
+      color: #1b1b2f;
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 245, 212, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(0, 245, 212, 0.1);
+      border: 2px solid rgba(0, 245, 212, 0.3);
+      color: #00f5d4;
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: #00f5d4;
+      background: rgba(0, 245, 212, 0.15);
+    }
+
+    .timer {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🚌 BlueBus</a>
+      <ul class="navbar-nav ms-auto flex-row">
+        <li id="userNav" class="nav-item" style="display: none;"><a class="nav-link" href="#"><strong id="userName"></strong></a></li>
+        <li id="authNav" class="nav-item"><a class="nav-link" href="login.html"><strong>Login</strong></a></li>
+        <li id="signupNav" class="nav-item"><a class="nav-link" href="signup.html" style="color: #ffd700 !important;"><strong>Sign Up</strong></a></li>
+        <li id="logoutNav" class="nav-item" style="display: none;"><a class="nav-link" href="#" id="logoutBtn"><strong>Logout</strong></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Success Content -->
+  <div class="success-container" style="margin-top: 80px;">
+    <div class="success-icon">✅</div>
+    <h1>Payment Successful!</h1>
+    <p class="success-message">Your bus ticket has been confirmed and payment is complete.</p>
+
+    <!-- Receipt -->
+    <div class="receipt">
+      <div class="receipt-item">
+        <span class="receipt-label">Booking ID:</span>
+        <span class="receipt-value" id="bookingId">-</span>
+      </div>
+      <div class="receipt-item">
+        <span class="receipt-label">Bus Name:</span>
+        <span class="receipt-value" id="busName">-</span>
+      </div>
+      <div class="receipt-item">
+        <span class="receipt-label">Seats:</span>
+        <span class="receipt-value" id="seats">-</span>
+      </div>
+      <div class="receipt-item">
+        <span class="receipt-label">Payment ID:</span>
+        <span class="receipt-value" id="paymentId">-</span>
+      </div>
+      <div class="receipt-item">
+        <span class="receipt-label">Total Paid:</span>
+        <span class="receipt-value">₹<span id="totalAmount">0</span></span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button class="btn-success" onclick="downloadTicket()">📥 Download Ticket</button>
+      <a href="index.html" class="btn-secondary">🏠 Back to Home</a>
+    </div>
+
+    <div class="timer">
+      ✨ Redirecting to home in <span id="countdown">10</span> seconds...
+    </div>
+  </div>
+
+  <script src="assests/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const booking = JSON.parse(localStorage.getItem('booking') || 'null');
+      const totalFare = localStorage.getItem('totalFare');
+      const paymentId = localStorage.getItem('paymentId');
+
+      if (!booking) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Get bus details
+      const buses = [
+        { id: 'B100', name: 'Swift Travels', fare: 450 },
+        { id: 'B200', name: 'CityLines', fare: 300 },
+        { id: 'B300', name: 'ComfortMove', fare: 700 }
+      ];
+
+      const bus = buses.find(b => b.id === booking.busId);
+
+      document.getElementById('bookingId').textContent = booking.bookingId;
+      document.getElementById('busName').textContent = bus.name;
+      document.getElementById('seats').textContent = booking.seats.join(', ');
+      document.getElementById('paymentId').textContent = paymentId;
+      document.getElementById('totalAmount').textContent = totalFare;
+
+      // Auto redirect after 10 seconds
+      let count = 10;
+      setInterval(() => {
+        count--;
+        document.getElementById('countdown').textContent = count;
+        if (count === 0) {
+          window.location.href = 'index.html';
+        }
+      }, 1000);
+    });
+
+    function downloadTicket() {
+      const booking = JSON.parse(localStorage.getItem('booking') || 'null');
+      const totalFare = localStorage.getItem('totalFare');
+      const paymentId = localStorage.getItem('paymentId');
+
+      const buses = [
+        { id: 'B100', name: 'Swift Travels', fare: 450, dep: '08:00', arr: '12:00' },
+        { id: 'B200', name: 'CityLines', fare: 300, dep: '09:30', arr: '14:00' },
+        { id: 'B300', name: 'ComfortMove', fare: 700, dep: '21:00', arr: '05:00' }
+      ];
+
+      const bus = buses.find(b => b.id === booking.busId);
+
+      const ticketContent = `
+═══════════════════════════════════════════
+              🚌 BLUEBUS TICKET
+═══════════════════════════════════════════
+
+Booking ID: ${booking.bookingId}
+Payment ID: ${paymentId}
+
+Bus: ${bus.name}
+Type: ${bus.type}
+Departure: ${bus.dep}
+Arrival: ${bus.arr}
+
+Seats: ${booking.seats.join(', ')}
+Total Fare: ₹${totalFare}
+
+═══════════════════════════════════════════
+Thank you for booking with BlueBus!
+Please carry this ticket during travel.
+═══════════════════════════════════════════
+      `;
+
+      // Create and download file
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(ticketContent));
+      element.setAttribute('download', `BlueBus_Ticket_${booking.bookingId}.txt`);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+
+      alert('Ticket downloaded successfully!');
+    }
+  </script>
+</body>
+</html>
