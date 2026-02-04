@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Micro Journal - One line a day">
+    <title>Micro Journal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <section id="landingPage" class="landing-page">
+            <div class="landing-content">
+                <h1 class="landing-title">Welcome to Micro Journal</h1>
+                <p class="landing-subtitle">Capture one line a day. Build your story, one moment at a time.</p>
+                <ul class="landing-features">
+                    <li>📝 Minimal, distraction-free journaling</li>
+                    <li>🔥 Track your daily streaks</li>
+                    <li>😊 Mood & tags for every entry</li>
+                    <li>🔒 Private, secure, and offline-first</li>
+                </ul>
+                <div class="landing-actions">
+                    <button id="landingLoginBtn" class="btn btn--primary">Login</button>
+                    <button id="landingSignupBtn" class="btn btn--secondary">Sign Up</button>
+                </div>
+            </div>
+        </section>
+        <!-- Auth Forms -->
+        <div id="authContainer" style="display:none">
+            <form id="loginForm" class="auth-form" autocomplete="off">
+                <button type="button" id="authHomeBtn" class="btn btn--home"
+                    style="position:absolute;left:1rem;top:1rem;">🏠 Home</button>
+                <h2>Login</h2>
+                <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="loginPassword" placeholder="Password" required
+                    autocomplete="current-password">
+                <button type="submit">Login</button>
+                <p class="auth-switch">No account? <a href="#" id="showSignup">Sign up</a></p>
+                <div class="auth-error" id="loginError"></div>
+            </form>
+            <form id="signupForm" class="auth-form" style="display:none" autocomplete="off">
+                <h2>Sign Up</h2>
+                <input type="text" id="signupUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="signupPassword" placeholder="Password" required autocomplete="new-password">
+                <button type="submit">Sign Up</button>
+                <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
+                <div class="auth-error" id="signupError"></div>
+            </form>
+        </div>
+        <header class="header">
+            <h1 class="header__title">Micro Journal</h1>
+            <p class="header__subtitle">One line a day</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-icon">📝</span>
+                    <span id="totalEntries">0</span> entries
+                </div>
+                <div class="stat-item streak">
+                    <span class="stat-icon">🔥</span>
+                    <span id="streakCount">0</span> day streak
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Today's Entry Section -->
+            <section class="today-entry">
+                <div class="today-entry__header">
+                    <h2 class="today-entry__date" id="todayDate"></h2>
+                    <span class="today-entry__badge">Today</span>
+                </div>
+
+                <!-- Daily Prompt -->
+                <div class="daily-prompt" id="dailyPrompt">
+                    <span class="prompt-icon">💭</span>
+                    <span class="prompt-text" id="promptText"></span>
+                    <button class="prompt-refresh" id="promptRefresh" aria-label="New prompt">🔄</button>
+                </div>
+
+                <!-- Mood Selector -->
+                <div class="mood-selector">
+                    <label class="mood-selector__label">How are you feeling?</label>
+                    <div class="mood-options">
+                        <button class="mood-btn" data-mood="😊" aria-label="Happy">😊</button>
+                        <button class="mood-btn" data-mood="😐" aria-label="Neutral">😐</button>
+                        <button class="mood-btn" data-mood="😔" aria-label="Sad">😔</button>
+                        <button class="mood-btn" data-mood="😤" aria-label="Frustrated">😤</button>
+                        <button class="mood-btn" data-mood="😴" aria-label="Tired">😴</button>
+                    </div>
+                </div>
+
+                <div class="today-entry__input-wrapper">
+                    <textarea id="todayInput" class="today-entry__input" rows="1" maxlength="140"
+                        placeholder="What's on your mind today?" aria-label="Today's journal entry"></textarea>
+
+                    <!-- Tags Input -->
+                    <div class="tags-input-wrapper">
+                        <input type="text" id="tagsInput" class="tags-input"
+                            placeholder="Add tags (e.g., #work #grateful)" aria-label="Entry tags">
+                        <div class="tags-display" id="tagsDisplay"></div>
+                    </div>
+
+                    <div class="today-entry__footer">
+                        <span class="character-counter" id="charCounter">0 / 140</span>
+                        <button id="saveBtn" class="btn btn--save" disabled aria-label="Save today's entry">
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="save-feedback" id="saveFeedback">Saved!</div>
+            </section>
+
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-header">
+                    <label for="searchInput" class="search-section__label">Search entries</label>
+                    <div class="filter-tags" id="filterTags"></div>
+                </div>
+                <input type="search" id="searchInput" class="search-input" placeholder="Filter by text or tags..."
+                    aria-label="Search journal entries">
+            </section>
+
+            <!-- Timeline Section -->
+            <section class="timeline-section">
+                <h2 class="timeline-section__title">Past Entries</h2>
+                <div id="entriesContainer" class="entries-container">
+                    <p class="entries-container__empty">No entries yet. Start writing today!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
