@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script type="module" src="js/main.js"></script>
+  <title>Quiz</title>
+  <meta name="description" content="A simple quizapp with categories, difficulties and a leaderboard">
+  <meta name="keywords" content="quiz quizzy category geography movies music">
+</head>
+
+<body>
+  <header>
+    <h1><img src="./img/Logga_white.png" alt="logo Quizzy"></h1>
+  </header>
+  <main>
+    <p class="desktop_version">QUIZZY <br> a quiz app for the whole <br> family and friends</p>
+   
+
+    <section class="start_section">
+      <form class="name_form">
+        <h2 class="start_h2">Welcome to Quizzy</h2>
+        <input type="text" placeholder="Enter your name" class="start_input" />
+        <button class="start_button" type="submit" disabled>ok</button>
+      </form>
+    </section>
+
+    <section class="allcards">
+      <h2 class="catoH2">Choose your category</h2>
+      <div class="allcardsDiv" >
+      <div class="cardoneandtwo geography">
+        <img class="catoanddiffpic" src="./img/geography-svgrepo-com.svg" alt="East" />
+        <p class="catoP">Geography</p>
+      </div>
+
+      <div class="cardoneandtwo movies">
+        <img class="catoanddiffpic" src="./img/movies-svgrepo-com.svg" alt="Medium" />
+        <p class="catoP">Movies</p>
+      </div>
+
+      <div class="cardtwoandfour music">
+        <img class="catoanddiffpic" src="./img/music-svgrepo-com.svg" alt="Hard" />
+        <p class="catoP">Music</p>
+      </div>
+
+      <div class="cardtwoandfour random">
+        <img class="randompic" src="./img/random-svgrepo-com.svg" alt="Medium" />
+        <p class="catoP">Random</p>
+      </div>
+    </div>
+    </section>
+
+    <section class="difficultlevel">
+      <h2 class="diffH2">Choose your difficulty</h2>
+      <div class="allcardsDiv" >
+      <div class="cardoneandtwo easy">
+        <img class="chickenpic" src="./img/chicken-2-svgrepo-com.svg" alt="East" />
+        <p class="catoP">Easy</p>
+      </div>
+
+      <div class="cardoneandtwo medium">
+        <img class="catoanddiffpic" src="./img/wolf-head-svgrepo-com.svg" alt="Medium" />
+        <p class="catoP">Medium</p>
+      </div>
+
+      <div class="cardbear hard">
+        <img class="bearpic" src="./img/bear-facing-right-svgrepo-com.svg" alt="Hard" />
+        <p class="catoP">Hard</p>
+      </div>
+    </div>
+    </section>
+
+    <div class="questiondiv">
+      <h2 class="question_counter">Question 1/10</h2>
+      <div class="timeOut">
+        <div class="timer"></div>
+        </div>
+      <section class="question_section">
+        <h2 class="question_h2"></h2>
+        <ul class="question"></ul>
+      </section>
+      <button class="question_button">Next</button>
+    </div>
+
+    <section class="leaderboard-container">
+      <article class="leaderboard">
+        <div class="top-3">
+          <div class="first">
+            <img src="./img/top1.png" alt="1st place" />
+            <p></p>
+          </div>
+          <div class="second-third">
+            <div class="second">
+              <img class="image-container" src="./img/top2.png" alt="2nd place" />
+              <p></p>
+            </div>
+            <div class="third">
+              <img src="./img/top3.png" alt="2nd place" />
+              <p></p>
+            </div>
+          </div>
+        </div>
+
+        <article class="fourthPlace-andSoOn">
+          <div class="players-List">
+          </div>
+        </article>
+      </article>
+    <div class="playAgainDiv"><button class="leaderNext">Play again</button></div>
+
+    </section>
+
+  </main>
+</body>
+
+</html>
